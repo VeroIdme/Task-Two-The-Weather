@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+    font-weight: light;
+    color: #EEE;
+}
+.App{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template: 1fr 25fr / 1fr;
+    background-image: url(https://p4.wallpaperbetter.com/wallpaper/449/334/397/aurora-borealis-atmosphere-wallpaper-preview.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.Clouds{
+    background-image: url(https://p4.wallpaperbetter.com/wallpaper/972/117/310/sunrays-sky-clouds-dawn-wallpaper-preview.jpg);
+}
+.Clear{
+    background-image: url(https://mobimg.b-cdn.net/v3/fetch/53/530ee413e3927aaaafa06ffa35621d0d.jpeg);
+}
+.Snow{
+    background-image: url(https://i.pinimg.com/originals/f6/ef/6e/f6ef6efd43ab054431d1c25589b981d9.jpg);
+}
+.Rain{
+    background-image: url(https://fondosmil.com/fondo/27674.jpg);
+}
+.Drizzle{
+    background-image: url(https://i.pinimg.com/736x/10/5a/51/105a519215c367a8b8528d160cd0602e.jpg);
+}
+.Thunderstorm{
+    background-image: url(https://c4.wallpaperflare.com/wallpaper/268/578/436/severe-thunderstorm-at-night-wallpaper-preview.jpg);
+}
+
+.name-town{
+    align-self: center;
+    padding: 10px 0 10px 25px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.container-one{
+    display: grid;
+    place-self: center;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background-color: rgb(36, 55, 85, .6);
+}
+.container-second{
+    display: grid;
+    grid-template: repeat(3,1fr) / repeat(3,1fr);
+    width: 410px;
+    height: 410px;
+    border-radius: 50%;
+    grid-template-areas: 
+    ". temperature . "
+    "min image max"
+    "des des des";
+    place-items: center;
+    place-self: center;
+    border: solid 1px #EEE;
+}
+.cont{
+    text-align: center;
+    
+}
+.temperature{
+    grid-area: temperature;
+   
+}
+.temp{
+    font-size: 55px;
+    font-weight: lighter;
+}
+.btn-change{
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    background-color: rgb(36, 55, 85, .8);
+    width: 100px;
+    padding: 1px;
+    border-radius: 3px;
+}
+.article-left{
+    grid-area: min;
+}
+.minmax{
+    display: grid;
+    grid-template: 1fr / 1fr 2fr;
+    padding: 2px 0 5px 0;
+    border-bottom: solid 1.5px #EEE;
+    width: 80px;
+}
+.minmax>.title{
+    font-size: 13px;
+    align-self: end;
+    padding-bottom: 1px;
+    text-align: start;
+}
+.minmax>.value-weather{
+    font-size: 18px;
+    text-align: end;
+}
+.container-humidity{
+    padding-top: 5px;
+}
+.container-humidity>.title{
+    font-size: 13px;
+}
+.container-humidity>.value-weather{
+    font-size: 18px;
+}
+.img{
+    grid-area: image;
+}
+.img>img{
+    width: 150px;
+}
+.article-rigth{
+    grid-area: max;
+}
+.article-weather{
+    grid-area: des;
+}
+.btn-change:hover{
+    cursor: pointer;
+    border: solid 1px #EEE;
+    box-shadow: 0 0 3px #EEE;
+}
+article.load{
+    background-color: #EEE;
+    width: 100px;;
+    height: 100px;
+    border-radius: 8px;
+}
+main.load{
+    background-color: white;
+}
+ul.load{
+    background-color: #EEE;
+    border-radius: 4px;
+    width: 100px;
+    height: 15px;
+    margin: 6px 2px 2px 20px;
+}
