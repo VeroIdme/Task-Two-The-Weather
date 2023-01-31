@@ -8,6 +8,8 @@ function App() {
   const [weather, setWeather] = useState()
   const [btnChange, setBtnChange] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [nameLocation, setNameLocation] = useState()
+  
   useEffect(() => {
     const success = (position) => {  
       const location = {
@@ -18,6 +20,7 @@ function App() {
     }
     navigator.geolocation.getCurrentPosition(success)
   },[])
+
   useEffect(() => {
     if(location){
     const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=7d5873d34efaee7f63c2364c11120c97`
@@ -27,7 +30,25 @@ function App() {
         setWeather(res.data)
       }, 100))
       .catch(err => console.log(err))}
-  },[location])
+    if(nameLocation){
+      let words = nameLocation.split(' ')
+      let capital = words.map(p => p[0].toUpperCase() + p.slice(1)).join(' ')
+      console.log(capital)
+      const URL = `https://api.openweathermap.org/data/2.5/weather?q=${capital}&appid=7d5873d34efaee7f63c2364c11120c97`
+    axios.get(URL)
+      .then(res => setTimeout(() => {
+        setLoading(false)
+        setWeather(res.data)
+      }, 100))
+      .catch(err => console.log(err))}
+  },[location, nameLocation])
+  
+  const handleChangeInput = e => {
+    e.preventDefault()
+    setNameLocation(e.target.text.value)
+    e.target.text.value = ""
+  }
+  
 
   const handleChange = () => {
     setBtnChange(!btnChange)
@@ -42,7 +63,7 @@ function App() {
     return(
       <div className={`App ${weather?.weather[0].main}`}  >
       <ul className='name-town load'></ul>
-       <main className='load container-one'>
+       <main className='load container-principal'>
         <section className='container-second'>
           <article className='load cont temperature'></article>
           <article className='load cont  article-left'></article>
@@ -58,7 +79,8 @@ function App() {
   return (
     <div className={`App ${weather?.weather[0].main}`}  >
       <ul className='name-town'><li>{`${weather?.name}, ${weather?.sys.country}`}</li></ul>
-       <main className='container-one'>
+       <main className='container-principal'>
+        <div className='container-one'>
         <section className='container-second'>
           <article className='cont temperature'>
             <h1 className='temp'>{btnChange?`${temperatureC} C°`:`${temperatureF} F°`}</h1>
@@ -88,9 +110,14 @@ function App() {
             </article>
           </article>
           <article className='cont article-weather'>
+            <form className='container-search'  onSubmit={handleChangeInput}>
+              <input type="text" id='text' placeholder="Enter your location" autoCapitalize='sentences' />
+              <button className='btn-change btn-search'>Search</button>
+            </form>
             <h2 className='description'>"{`${weather?.weather[0].description}`}"</h2>
           </article>
         </section>
+        </div>
        </main>
     </div>
   )}

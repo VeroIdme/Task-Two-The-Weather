@@ -36,24 +36,33 @@
 
 .name-town{
     align-self: center;
-    padding: 10px 0 10px 25px;
+    padding: 10px 0 0 0;
+    text-align: center;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 25px;
+    list-style: none;
 }
-
-.container-one{
+.container-principal{
     display: grid;
     place-self: center;
     width: 450px;
+    min-width: 200px;
     height: 450px;
+    min-height: 200px;
+}
+.container-one{
+    display: grid;
+    place-self: center;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     background-color: rgb(36, 55, 85, .6);
 }
 .container-second{
     display: grid;
     grid-template: repeat(3,1fr) / repeat(3,1fr);
-    width: 410px;
-    height: 410px;
+    width: 92%;
+    height: 92%;
     border-radius: 50%;
     grid-template-areas: 
     ". temperature . "
@@ -123,6 +132,7 @@
 }
 .article-weather{
     grid-area: des;
+    align-self: start;
 }
 .btn-change:hover{
     cursor: pointer;
@@ -144,4 +154,20 @@ ul.load{
     width: 100px;
     height: 15px;
     margin: 6px 2px 2px 20px;
+}
+.container-search{
+    display: grid;
+    grid-template: 1fr 1fr / 1fr;
+    gap: 6px;
+    place-items: center;
+    margin-bottom: 10px;
+}
+
+.container-search>input{
+    width: 90%;
+    font-size: 11px;
+    padding-left: 5px;
+    outline: none;
+    color: black;
+    
 }
